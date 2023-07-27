@@ -1222,11 +1222,15 @@ class Camera
   }
 
   void closeCaptureSession() {
-    if (captureSession != null) {
-      Log.i(TAG, "closeCaptureSession");
+    try {
+      if (captureSession != null) {
+        Log.i(TAG, "closeCaptureSession");
 
-      captureSession.close();
-      captureSession = null;
+        captureSession.close();
+        captureSession = null;
+      }
+    } catch (NullPointerException e) {
+      Log.e(TAG, "NullPointerException encountered while closing capture session", e);
     }
   }
 
