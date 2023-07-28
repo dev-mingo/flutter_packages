@@ -751,6 +751,11 @@ class Camera
     } catch (CameraAccessException e) {
       dartMessenger.sendCameraErrorEvent(e.getMessage());
       return;
+    } catch (Throwable t) {
+      // mkleeboy3: Added to handle IllegalStateException
+      dartMessenger.sendCameraErrorEvent(t.getMessage());
+      Log.i(TAG, "[unlockAutoFocus] captureSession null, returning");
+      return;
     }
 
     refreshPreviewCaptureSession(
@@ -1230,7 +1235,8 @@ class Camera
         captureSession = null;
       }
     } catch (NullPointerException e) {
-      Log.e(TAG, "NullPointerException encountered while closing capture session", e);
+      // mkleeboy3: Added to evade NPE
+      Log.i(TAG, "NullPointerException encountered while closing capture session");
     }
   }
 
