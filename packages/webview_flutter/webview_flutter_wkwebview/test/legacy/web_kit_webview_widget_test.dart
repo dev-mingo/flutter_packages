@@ -3,9 +3,6 @@
 // found in the LICENSE file.
 
 import 'dart:math';
-// TODO(a14n): remove this import once Flutter 3.1 or later reaches stable (including flutter/flutter#106316)
-// ignore: unnecessary_import
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -151,7 +148,7 @@ void main() {
         mockWebViewConfiguration,
         const WKNavigationAction(
           request: request,
-          targetFrame: WKFrameInfo(isMainFrame: false),
+          targetFrame: WKFrameInfo(isMainFrame: false, request: request),
           navigationType: WKNavigationType.linkActivated,
         ),
       );
@@ -1169,7 +1166,9 @@ void main() {
             mockWebView,
             const WKNavigationAction(
               request: NSUrlRequest(url: 'https://google.com'),
-              targetFrame: WKFrameInfo(isMainFrame: false),
+              targetFrame: WKFrameInfo(
+                  isMainFrame: false,
+                  request: NSUrlRequest(url: 'https://google.com')),
               navigationType: WKNavigationType.linkActivated,
             ),
           ),

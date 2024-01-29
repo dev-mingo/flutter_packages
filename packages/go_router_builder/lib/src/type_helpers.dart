@@ -94,14 +94,14 @@ String enumMapName(InterfaceType type) => '_\$${type.element.name}EnumMap';
 
 String _stateValueAccess(ParameterElement element, Set<String> pathParameters) {
   if (element.isExtraField) {
-    return 'extra as ${element.type.getDisplayString(withNullability: element.isOptional)}';
+    return 'extra as ${element.type.getDisplayString(withNullability: true)}';
   }
 
   late String access;
   if (pathParameters.contains(element.name)) {
     access = 'pathParameters[${escapeDartString(element.name)}]';
   } else {
-    access = 'queryParameters[${escapeDartString(element.name.kebab)}]';
+    access = 'uri.queryParameters[${escapeDartString(element.name.kebab)}]';
   }
   if (pathParameters.contains(element.name) ||
       (!element.type.isNullableType && !element.hasDefaultValue)) {
@@ -284,12 +284,12 @@ class _TypeHelperIterable extends _TypeHelper {
       }
 
       return '''
-state.queryParametersAll[
+state.uri.queryParametersAll[
         ${escapeDartString(parameterElement.name.kebab)}]
         ?.map($entriesTypeDecoder)$iterableCaster''';
     }
     return '''
-state.queryParametersAll[${escapeDartString(parameterElement.name.kebab)}]''';
+state.uri.queryParametersAll[${escapeDartString(parameterElement.name.kebab)}]''';
   }
 
   @override
@@ -334,7 +334,7 @@ abstract class _TypeHelperWithHelper extends _TypeHelper {
         (paramType.isNullableType || parameterElement.hasDefaultValue)) {
       return '$convertMapValueHelperName('
           '${escapeDartString(parameterName.kebab)}, '
-          'state.queryParameters, '
+          'state.uri.queryParameters, '
           '${helperName(paramType)})';
     }
     return '${helperName(paramType)}'

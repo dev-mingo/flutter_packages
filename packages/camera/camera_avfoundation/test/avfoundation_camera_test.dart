@@ -30,7 +30,7 @@ void main() {
 
     // Setting up a handler requires bindings to be initialized, and since
     // registerWith is called very early in initialization the bindings won't
-    // have been initialized. While registerWith could intialize them, that
+    // have been initialized. While registerWith could initialize them, that
     // could slow down startup, so instead the handler should be set up lazily.
     final ByteData? response =
         await _ambiguate(TestDefaultBinaryMessengerBinding.instance)!
@@ -1143,6 +1143,46 @@ void main() {
       expect(channel.log, <Matcher>[
         isMethodCall('startImageStream', arguments: null),
         isMethodCall('stopImageStream', arguments: null),
+      ]);
+    });
+
+    test('Should set the ImageFileFormat to heif', () async {
+      // Arrange
+      final MethodChannelMock channel = MethodChannelMock(
+        channelName: _channelName,
+        methods: <String, dynamic>{'setImageFileFormat': 'heif'},
+      );
+
+      // Act
+      await camera.setImageFileFormat(cameraId, ImageFileFormat.heif);
+
+      // Assert
+      expect(channel.log, <Matcher>[
+        isMethodCall('setImageFileFormat', arguments: <String, Object?>{
+          'cameraId': cameraId,
+          'fileFormat': 'heif',
+        }),
+      ]);
+    });
+
+    test('Should set the ImageFileFormat to jpeg', () async {
+      // Arrange
+      final MethodChannelMock channel = MethodChannelMock(
+        channelName: _channelName,
+        methods: <String, dynamic>{
+          'setImageFileFormat': 'jpeg',
+        },
+      );
+
+      // Act
+      await camera.setImageFileFormat(cameraId, ImageFileFormat.jpeg);
+
+      // Assert
+      expect(channel.log, <Matcher>[
+        isMethodCall('setImageFileFormat', arguments: <String, Object?>{
+          'cameraId': cameraId,
+          'fileFormat': 'jpeg',
+        }),
       ]);
     });
   });

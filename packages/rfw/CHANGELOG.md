@@ -1,5 +1,38 @@
-## NEXT
+## 1.0.19
+* Add `DropdownButton` and `ClipRRect` widgets to rfw widget library.
 
+## 1.0.18
+* Exposes `WidgetLibrary`s registered in `Runtime`.
+* Exposes widgets map in `LocalWidgetLibrary`.
+
+## 1.0.17
+
+* Adds support for tracking source locations of `BlobNode`s and
+  finding `BlobNode`s from the widget tree (`BlobNode.source` and
+  `Runtime.blobNodeFor` respectively).
+
+## 1.0.16
+
+* Updates minimum supported SDK version to Flutter 3.10/Dart 3.0.
+* Fixes lint warnings.
+
+## 1.0.15
+
+* Updates README.md to point to the CONTRIBUTING.md file.
+* Introduces CONTRIBUTING.md, and adds more information about golden testing.
+
+## 1.0.14
+
+* Adds pub topics to package metadata.
+
+## 1.0.13
+
+* Block comments in RFW's text format. (`/*...*/`)
+
+## 1.0.12
+
+* Improves web compatibility.
+* Updates minimum supported SDK version to Flutter 3.7/Dart 2.19.
 * Adds more testing to restore coverage to 100%.
 * Removes some dead code.
 

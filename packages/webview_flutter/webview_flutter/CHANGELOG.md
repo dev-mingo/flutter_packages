@@ -1,3 +1,43 @@
+## NEXT
+
+* Updates support matrix in README to indicate that iOS 11 is no longer supported.
+* Clients on versions of Flutter that still support iOS 11 can continue to use this
+  package with iOS 11, but will not receive any further updates to the iOS implementation.
+
+## 4.4.4
+
+* Updates minimum required plugin_platform_interface version to 2.1.7.
+
+## 4.4.3
+
+* Updates minimum supported SDK version to Flutter 3.10/Dart 3.0.
+* Fixes new lint warnings.
+
+## 4.4.2
+
+* Fixes `use_build_context_synchronously` lint violations in the example app.
+
+## 4.4.1
+
+* Exposes `JavaScriptLogLevel` from platform interface.
+
+## 4.4.0
+
+* Adds support to register a callback to receive JavaScript console messages. See `WebViewController.setOnConsoleMessage`.
+
+## 4.3.0
+
+* Adds support to retrieve the user agent. See `WebViewController.getUserAgent`.
+
+## 4.2.4
+
+* Adds pub topics to package metadata.
+
+## 4.2.3
+
+* Fixes the code sample in the dartdocs for `WebViewController.addJavaScriptChannel`.
+* Updates minimum supported SDK version to Flutter 3.7/Dart 2.19.
+
 ## 4.2.2
 
 * Fixes documentation typo.

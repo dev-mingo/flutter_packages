@@ -1,3 +1,78 @@
+## 0.5.0+28
+
+* Wraps CameraX classes needed to implement setting focus and exposure points and exposure offset.
+* Updates compileSdk version to 34.
+
+## 0.5.0+27
+
+* Removes or updates any references to an `ActivityPluginBinding` when the plugin is detached
+  or attached/re-attached, respectively, to an `Activity.`
+
+## 0.5.0+26
+
+* Fixes new lint warnings.
+
+## 0.5.0+25
+
+* Implements `lockCaptureOrientation` and `unlockCaptureOrientation`.
+
+## 0.5.0+24
+
+* Updates example app to use non-deprecated video_player method.
+
+## 0.5.0+23
+
+* Updates minimum supported SDK version to Flutter 3.10/Dart 3.0.
+* Adds `CameraXProxy` class to test `JavaObject` creation and their method calls in the plugin.
+
+## 0.5.0+22
+
+* Fixes `_getResolutionSelectorFromPreset` null pointer error.
+
+## 0.5.0+21
+
+* Changes fallback resolution strategies for camera use cases to look for a higher resolution if neither the desired
+  resolution nor any lower resolutions are available.
+
+## 0.5.0+20
+
+* Implements `setZoomLevel`.
+
+## 0.5.0+19
+
+* Implements torch flash mode.
+
+## 0.5.0+18
+
+* Implements `startVideoCapturing`.
+
+## 0.5.0+17
+
+* Implements resolution configuration for all camera use cases.
+
+## 0.5.0+16
+
+* Adds pub topics to package metadata.
+* Updates minimum supported SDK version to Flutter 3.7/Dart 2.19.
+
+## 0.5.0+15
+
+* Explicitly removes `READ_EXTERNAL_STORAGE` permission that may otherwise be implied from `WRITE_EXTERNAL_STORAGE`.
+
+## 0.5.0+14
+
+* Wraps classes needed to implement resolution configuration for video recording.
+
+## 0.5.0+13
+
+* Migrates `styleFrom` usage in examples off of deprecated `primary` and `onPrimary` parameters.
+
+## 0.5.0+12
+
+* Wraps classes needed to implement resolution configuration for image capture, image analysis, and preview.
+* Removes usages of deprecated APIs for resolution configuration.
+* Bumps CameraX version to 1.3.0-beta01.
+
 ## 0.5.0+11
 
 * Fixes issue with image data not being emitted after relistening to stream returned by `onStreamedFrameAvailable`.
